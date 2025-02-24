@@ -1,0 +1,13 @@
+name: 'Required Files Validator'
+description: 'Validates if required files exist in the repository'
+inputs:
+  required-files:
+    description: 'Comma-separated list of required files'
+    required: true
+  base-path:
+    description: 'Base path to check files from'
+    required: false
+    default: '.'
+runs:
+  using: 'node16'
+  main: 'dist/index.js' 
