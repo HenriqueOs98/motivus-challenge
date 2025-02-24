@@ -7,6 +7,12 @@ on:
 env:
   NODE_VERSION: '18'
 
+# Adicione as permissões necessárias
+permissions:
+  contents: write
+  packages: write
+  issues: write
+
 jobs:
   quality-check:
     runs-on: ubuntu-latest  # Usando o runner padrão do GitHub
