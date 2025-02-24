@@ -27,6 +27,8 @@ jobs:
       
       - name: Custom TypeScript Linter Action
         uses: ./.github/actions/custom-linter
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}  # GitHub automatically provides this
 
   build-and-test:
     needs: quality-check
