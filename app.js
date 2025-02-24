@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'healthy' });
 });
-
+//comentario  
 if (process.env.NODE_ENV !== 'test') {
   app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
