@@ -1,0 +1,5 @@
+name: 'Custom Quality Gates'
+description: 'Performs custom quality checks and linting'
+runs:
+  using: 'node16'
+  main: 'dist/index.js' 
