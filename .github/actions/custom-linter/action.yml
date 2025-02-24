@@ -1,5 +1,9 @@
 name: 'Custom Quality Gates'
 description: 'Performs custom quality checks and linting'
+inputs:
+  github-token:
+    description: 'GitHub token'
+    required: true
 runs:
   using: 'node16'
   main: 'dist/index.js' 
