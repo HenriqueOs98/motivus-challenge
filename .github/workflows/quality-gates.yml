@@ -12,18 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      - name: Build File Validator Action
-        run: |
-          cd .github/actions/file-validator
-          npm install
-          npm run build
-          npm run package
-      
       - name: Check Required Files
         uses: ./.github/actions/file-validator
         with:
@@ -45,7 +33,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint
-        run: npm run lint
+        run: npx eslint . --ext .ts,.tsx
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
