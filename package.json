@@ -7,7 +7,7 @@
     "start": "node app.js",
     "test": "jest",
     "build": "tsc",
-    "package": "mkdir -p dist && cp package.json dist/ && cd dist && zip -r app.zip .",
+    "package": "mkdir -p dist && cp package.json package-lock.json dist/ && npm ci --prefix dist && cd dist && zip -r app.zip .",
     "lint": "eslint . --ext .ts,.js"
   },
   "dependencies": {
