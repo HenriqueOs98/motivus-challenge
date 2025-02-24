@@ -1,18 +1,19 @@
 {
-  "name": "custom-linter-action",
+  "name": "custom-linter",
   "version": "1.0.0",
-  "description": "Custom linter GitHub action",
+  "description": "Custom linter action",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "package": "ncc build --source-map --license licenses.txt"
   },
   "dependencies": {
-    "@actions/core": "^1.10.0"
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@vercel/ncc": "^0.38.0",
+    "@types/node": "^16.18.0",
+    "@vercel/ncc": "^0.36.1",
     "typescript": "^5.0.0"
   }
 } 
