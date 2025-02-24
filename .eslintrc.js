@@ -7,14 +7,15 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   env: {
     node: true,
-    es6: true,
     jest: true,
   },
+  root: true,
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   rules: {
-    // Adicione regras personalizadas aqui
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
   },
 }; 
