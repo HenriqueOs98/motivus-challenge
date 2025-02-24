@@ -1,24 +1,26 @@
-name: Pipeline Failure Notification
+name: Email Notification Workflow
 
 on:
   workflow_run:
-    workflows: ["CI/CD Pipeline"]
+    workflows: ["CI/CD Pipeline"]  # Match the exact name from ci-cd.yml
     types: [completed]
+    branches: [main]
 
 jobs:
   notify:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    
     steps:
-      # ✓ Requirement 4: Email notification on failure
-      - name: Send email
+      - name: Send email notification
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: ${{secrets.MAIL_SERVER}}
+          server_address: smtp-mail.outlook.com  # Outlook SMTP server since you're using outlook.com
           server_port: 587
-          username: ${{secrets.MAIL_USERNAME}}
-          password: ${{secrets.MAIL_PASSWORD}}
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
           subject: CI/CD Pipeline Failed
           body: The CI/CD pipeline has failed. Please check the GitHub Actions logs.
-          to: ${{ github.event.workflow_run.head_commit.author.email }}
-          from: CI/CD Pipeline 
+          to: henriqueos98@outlook.com
+          from: CI/CD Pipeline <${{ secrets.EMAIL_USERNAME }}>
+          secure: true 

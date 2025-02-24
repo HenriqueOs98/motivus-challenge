@@ -9,16 +9,28 @@ env:
 
 jobs:
   quality-check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Usando o runner padrão do GitHub
     steps:
       - uses: actions/checkout@v3
       
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Build Custom Action
+        working-directory: .github/actions/custom-linter
+        run: |
+          npm install
+          npm run build
+          npm run package
+      
       - name: Custom TypeScript Linter Action
-        uses: ./.github/actions/custom-linter  # Will create this custom action next
-  
+        uses: ./.github/actions/custom-linter
+
   build-and-test:
     needs: quality-check
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Usando o runner padrão do GitHub
     steps:
       - uses: actions/checkout@v3
       
